@@ -1,23 +1,43 @@
-import './App.css';
+import React from 'react';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { Provider } from 'react-redux';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import { createMuiTheme, StylesProvider, ThemeProvider } from '@material-ui/core/styles';
+import { CssBaseline } from '@material-ui/core';
+import './styles/bootstrap.scss';
+import './styles/global.scss';
 
-export default App;
+import { store } from './redux/store.js';
+
+import { MainLayout } from './components/layout/MainLayout/MainLayout';
+import { Homepage } from './components/views/Homepage/Homepage';
+import { NotFound } from './components/views/NotFound/NotFound';
+
+const theme = createMuiTheme({
+  palette: {
+    primary: { main: '#2B4C6F' },
+  },
+});
+
+const App = () => (
+  <Provider store={ store }>
+    <BrowserRouter>
+      <StylesProvider injectFirst>
+        <ThemeProvider theme={ theme }>
+          <CssBaseline />
+          <MainLayout>
+            <Switch>
+              <Route exact path='/' component={ Homepage } />
+              <Route exact path='/post/add' component={ NotFound } />
+              <Route exact path='/post/:id' component={ NotFound } />
+              <Route exact path='/post/:id/edit' component={ NotFound } />
+              <Route path='*' component={ NotFound } />
+            </Switch>
+          </MainLayout>
+        </ThemeProvider>
+      </StylesProvider>
+    </BrowserRouter>
+  </Provider>
+);
+
+export { App };
