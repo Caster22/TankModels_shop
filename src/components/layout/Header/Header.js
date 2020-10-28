@@ -5,7 +5,10 @@ import styles from './Header.module.scss';
 const Component = () => {
   return (
     <div className={ styles.root }>
-      Header
+      Header start:<br/>
+      Header stop:
+      <br/>
+      <br/>
     </div>
   );
 };

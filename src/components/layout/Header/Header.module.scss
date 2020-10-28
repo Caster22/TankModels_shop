@@ -3,5 +3,6 @@
 .root {
   margin: auto;
   font-family: $main-font;
-  background-color: $main-theme;
+  background-color: $header-background;
+  color: $header-text-color;
 }

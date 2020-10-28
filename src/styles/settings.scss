@@ -8,13 +8,20 @@ $base-size: 12px;
 $title-font: 'Sansita Swashed', cursive;
 $main-font: 'Open Sans', sans-serif;
 
-/* colors */
+/* Global colors */
 
-$main-theme: #bdc3c7;
+$main-background: #bdc3c7;
 $title-color: #8e44ad;
 $button-color: #2c3e50;
 $top-bar-bg: #ecf0f1;
 $shadow: grey;
+
+/* Header colors */
+$header-background: #001a00;
+$topBar-background: #004d00; // or #003300 ?
+$menuBar-background: #e6ffe6;
+$menuBar-text-color: #001a00;
+$header-text-color: #e6ffe6;
 
 /* Transition */
 $transition-background: .2s;
