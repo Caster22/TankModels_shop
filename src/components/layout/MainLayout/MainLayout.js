@@ -5,10 +5,8 @@ import { Header } from '../Header/Header';
 
 const Component =  ({ children }) => (
   <div className={ styles.root }>
-    <div className='container'>
-      <Header />
-      {children}
-    </div>
+    <Header />
+    {children}
   </div>
 );
 
