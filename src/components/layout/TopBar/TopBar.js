@@ -12,7 +12,8 @@ class Component extends React.Component {
           <div className={styles.topBar}>
             <div className={styles.topBar__left}>
               <a href='/'>
-                <img src={ icon } alt='tank_icon'/>
+                <img className='pr-2' src={ icon } alt='tank_icon'/>
+                <span>Home</span>
               </a>
             </div>
             <div className={styles.topBar__right}>

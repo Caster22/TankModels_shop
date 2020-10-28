@@ -10,7 +10,7 @@
 
 .topBar {
   display: flex;
-  align-items: center;
+  align-content: center;
   justify-content: space-between;
   height: 2.5vh;
 
@@ -23,7 +23,12 @@
       }
       &:hover {
         filter: invert(53%) sepia(81%) saturate(471%) hue-rotate(4deg) brightness(96%) contrast(81%);
+        text-decoration: none;
         transition: $transition-color;
+      }
+      span {
+        text-decoration: none;
+        color: $header-text-color;
       }
     }
   }

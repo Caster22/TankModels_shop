@@ -18,17 +18,32 @@
   .company__left {
     font-family: $title-font;
     font-size: $base-size;
+    transition: $transition-color;
+    &:hover {
+      transition: $transition-color;
+      color: $hover-color;
+    }
   }
 
   .company__middle {
     img {
       height: 9vh;
+      transition: $transition-color;
+      &:hover {
+        transition: $transition-color;
+        transform: scale(1.5);
+      }
     }
   }
 
   .company__right {
+    transition: $transition-color;
+    div:hover {
+      color: $hover-color;
+      transition: $transition-color;
+    }
     .icon {
-      height: 2vh;
+      font-size: 30px;
     }
   }
 }
