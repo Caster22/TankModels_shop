@@ -11,9 +11,7 @@ const Component = () => {
   return (
     <div className={ styles.root }>
       <TopBar />
-      <br/>
       <CompanyClaim />
-      <br/>
       <MenuBar />
     </div>
   );

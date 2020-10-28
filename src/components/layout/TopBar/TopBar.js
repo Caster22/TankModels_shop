@@ -1,7 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+//import PropTypes from 'prop-types';
 import styles from './TopBar.module.scss';
-import logo from '../../../Images/Tank_small.png';
+import icon from '../../../Images/Tank_small.png';
 
 
 class Component extends React.Component {
@@ -12,7 +12,7 @@ class Component extends React.Component {
           <div className={styles.topBar}>
             <div className={styles.topBar__left}>
               <a href='/'>
-                <img src={ logo } alt='tank_logo'/>
+                <img src={ icon } alt='tank_icon'/>
               </a>
             </div>
             <div className={styles.topBar__right}>

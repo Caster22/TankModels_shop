@@ -5,4 +5,30 @@
   font-family: $main-font;
   background-color: $header-background;
   color: $header-text-color;
+  height: 10vh;
+}
+
+
+.company {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: 10vh;
+
+  .company__left {
+    font-family: $title-font;
+    font-size: $base-size;
+  }
+
+  .company__middle {
+    img {
+      height: 9vh;
+    }
+  }
+
+  .company__right {
+    .icon {
+      height: 2vh;
+    }
+  }
 }
