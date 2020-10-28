@@ -4,9 +4,7 @@ import styles from './Homepage.module.scss';
 
 const Component = () => (
   <div className={ styles.root }>
-    <div className='container'>
-			Home Page!
-    </div>
+    Home Page!
   </div>
 );
 
