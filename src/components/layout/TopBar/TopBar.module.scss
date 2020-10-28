@@ -5,4 +5,37 @@
   font-family: $main-font;
   background-color: $topBar-background;
   color: $header-text-color;
+  height: 2.5vh;
+}
+
+.topBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .topBar__left {
+    a {
+      img {
+        height: 2vh;
+        filter: invert(88%) sepia(9%) saturate(198%) hue-rotate(189deg) brightness(111%) contrast(90%);
+        transition: $transition-color;
+      }
+      &:hover {
+        filter: invert(53%) sepia(81%) saturate(471%) hue-rotate(4deg) brightness(96%) contrast(81%);
+        transition: $transition-color;
+      }
+    }
+  }
+
+  .topBar__right {
+    font-size: $base-size*1.5;
+    a {
+      color: $header-text-color;
+      text-decoration: none;
+      &:hover {
+        color: $hover-color;
+        text-shadow: 1px 1px 1px $shadow;
+      }
+    }
+  }
 }

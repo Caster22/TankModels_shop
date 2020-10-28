@@ -1,6 +1,7 @@
 //import Axios from 'axios';
 
 /* selectors */
+export const getLogo = ({ logo }) => logo;
 
 /* action name creator */
 const reducerName = 'placeholder';

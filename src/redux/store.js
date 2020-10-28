@@ -3,12 +3,12 @@ import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 import { initialState } from './initialState';
-import { reducer as mockReducer } from './mockRedux';
+import { reducer as TopBarReducer } from './TopBarRedux';
 
 
 // define reducers
 const reducers = {
-  mockReducer: mockReducer,
+  mockReducer: TopBarReducer,
 };
 
 // add blank reducers for initial state properties without reducers
