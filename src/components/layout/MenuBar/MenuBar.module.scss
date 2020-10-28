@@ -1,0 +1,8 @@
+@import '../../../styles/settings.scss';
+
+.root {
+  margin: auto;
+  font-family: $main-font;
+  background-color: $menuBar-background;
+  color: $menuBar-text-color;
+}
