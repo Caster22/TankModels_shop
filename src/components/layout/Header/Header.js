@@ -1,17 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './Header.module.scss';
+import {TopBar} from '../TopBar/TopBar';
+import {CompanyClaim} from '../CompanyClaim/CompanyClaim';
 
 const Component = () => {
   return (
     <div className={ styles.root }>
-      <div className='container'>
-        <br/>
-        Header start:<br/>
-        Header stop:
-        <br/>
-        <br/>
-      </div>
+      <TopBar />
+      <br/>
+      <CompanyClaim />
+      <br/>
     </div>
   );
 };
