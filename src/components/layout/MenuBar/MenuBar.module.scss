@@ -5,6 +5,7 @@
   font-family: $main-font;
   background-color: $menuBar-background;
   color: $menuBar-text-color;
+  box-shadow: 0 4px 5px -1px $header-background;
 }
 
 .menuBar {
