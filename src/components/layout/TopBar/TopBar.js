@@ -17,7 +17,7 @@ class Component extends React.Component {
               </a>
             </div>
             <div className={styles.topBar__right}>
-              <a href='/google.com'>
+              <a href='https://www.google.com'>
                 Login via Google
               </a>
             </div>
