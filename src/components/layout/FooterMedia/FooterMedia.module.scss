@@ -6,3 +6,33 @@
   background-color: $footer-lightBackground;
   color: $footer-text-color;
 }
+
+.copyright {
+  p {
+    margin: 0;
+    color: $footer-text-color;
+    font-size: 14px;
+    line-height: 26px;
+  }
+}
+
+.socialMedia {
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    li {
+      display: inline-block;
+      margin-left: 1rem;
+      a {
+        color: $footer-text-color;
+        text-decoration: none;
+        transition: $transition-color;
+        &:hover {
+          color: $hover-color;
+          transition: $transition-color;
+        }
+      }
+    }
+  }
+}
