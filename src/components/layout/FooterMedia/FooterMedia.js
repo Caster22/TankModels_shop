@@ -7,7 +7,9 @@ import styles from './FooterMedia.module.scss';
 const Component = () => {
   return (
     <div className={ styles.root }>
-
+      <div className='container'>
+        div
+      </div>
     </div>
   );
 };

@@ -7,7 +7,7 @@ import { Footer } from '../Footer/Footer';
 const Component =  ({ children }) => (
   <div className={ styles.root }>
     <Header />
-    {children}
+    { children }
     <Footer />
   </div>
 );

@@ -4,13 +4,15 @@ import styles from './Footer.module.scss';
 
 /* Components */
 import { FooterMedia } from '../FooterMedia/FooterMedia';
+import { FooterInfo } from '../FooterInfo/FooterInfo';
 
 
 const Component = () => {
   return (
-    <div className={ styles.root }>
+    <footer className={ styles.root }>
+      <FooterInfo />
       <FooterMedia />
-    </div>
+    </footer>
   );
 };
 

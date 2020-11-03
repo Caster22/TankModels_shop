@@ -3,6 +3,40 @@
 .root {
   margin: auto;
   font-family: $main-font;
-  background-color: $footer-background;
+  background-color: $footer-darkBackground;
   color: $footer-text-color;
+}
+
+.info {
+  &__wrapper {
+    h6 {
+      color: $footer-text-color;
+      text-transform: uppercase;
+      margin: 1rem 0 1rem 0;
+    }
+    ul {
+      margin: 0 0 1.5rem 0;
+      padding: 0;
+      list-style: none;
+      li {
+        a {
+          font-size: 14px;
+          line-height: 30px;
+          color: $footer-text-color;
+          transition: $transition-color;
+          &:hover {
+            color: $hover-color;
+            text-decoration: none;
+            transition: $transition-color;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 575px) {
+  .info__wrapper {
+    text-align: center;
+  }
 }
