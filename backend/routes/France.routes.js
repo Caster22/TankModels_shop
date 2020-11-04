@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const FranceController = require('../controllesrs/France.controller');
+const FranceController = require('../controllers/France.controller');
 
 
 router.get('/concerts', FranceController.getAll);

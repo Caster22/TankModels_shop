@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const GBController = require('../controllesrs/GB.controller');
+const GBController = require('../controllers/GB.controller');
 
 
 router.get('/concerts', GBController.getAll);

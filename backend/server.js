@@ -2,10 +2,15 @@ const express = require('express');
 const cors = require('cors');
 const path = require('path');
 const mongoose = require('mongoose');
-//const dotenv = require('dotenv').config();
+require('dotenv').config()
 
 /* Routes */
-const mockRoutes = require('./routes/');
+const USARoutes = require('./routes/USA.routes');
+const GermanyRoutes = require('./routes/Germany.routes');
+const USSRRoutes = require('./routes/USSR.routes');
+const FranceRoutes = require('./routes/France.routes');
+const GBRoutes = require('./routes/GB.routes');
+const PolandRoutes = require('./routes/Poland.routes');
 
 const app = express();
 
@@ -15,7 +20,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 /* API ENDPOINTS */
-app.use('/api', mockRoutes);
+app.use('/api', USARoutes);
+app.use('/api', GermanyRoutes);
+app.use('/api', USSRRoutes);
+app.use('/api', FranceRoutes);
+app.use('/api', GBRoutes);
+app.use('/api', PolandRoutes);
 
 /* API ERROR PAGES */
 app.use('/api', (req, res) => {
@@ -29,12 +39,21 @@ app.use('*', (req, res) => {
 });
 
 /* MONGOOSE */
-/*const DBConnect = {
-  login: process.env.DB_USER,
-  pass: process.env.DB_PASS,
-}*/
+const DBConnect = (login, pass) => {
+  if (!process.env.DB_USER || !process.env.DB_PASS) {
+    login = process.env.Log;
+    pass = process.env.Pas;
+    return `${login}:${pass}`;
+  } else {
+    login = process.env.DB_USER;
+    pass = process.env.DB_PASS;
+    return `${login}:${pass}`;
+  }
+}
 
-const dbURI = process.env.NODE_ENV === 'production' ? `mongodb+srv://${ process.env.DB_PASS }:${ process.env.DB_USER }@cluster0.hud0b.mongodb.net/TankModels?retryWrites=true&w=majority` : `mongodb+srv://${ process.env.Pas }:${ process.env.Log }@cluster0.hud0b.mongodb.net/TankModels?retryWrites=true&w=majority`;
+
+
+const dbURI = `mongodb+srv://${ DBConnect('','') }@cluster0.hud0b.mongodb.net/<dbname>?retryWrites=true&w=majority`;
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 const db = mongoose.connection;
