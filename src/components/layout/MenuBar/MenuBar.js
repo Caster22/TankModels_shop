@@ -4,28 +4,68 @@ import styles from './MenuBar.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingBasket } from '@fortawesome/free-solid-svg-icons';
 
-const Component = () => (
-  <div className={ styles.root }>
-    <div className='container'>
-      <div className={styles.menuBar}>
-        <div className={styles.menuBar__left}>
-          <div className={styles.menuBar__left__item}><a href='/shop/USA'>USA</a></div>
-          <div className={styles.menuBar__left__item}><a href='/shop/germany'>Germany</a></div>
-          <div className={styles.menuBar__left__item}><a href='/shop/zsrr'>ZSRR</a></div>
-          <div className={styles.menuBar__left__item}><a href='/shop/france'>France</a></div>
-          <div className={styles.menuBar__left__item}><a href='/shop/gb'>GB</a></div>
-          <div className={styles.menuBar__left__item}><a href='/shop/poland'>Poland</a></div>
-        </div>
-        <a className={styles.menuBar__linkCart} href='/shop/cart'>
-          <div className={styles.menuBar__right}>
-            <FontAwesomeIcon className={styles.menuBar__right__cart} icon={ faShoppingBasket } />
-            <div className={styles.menuBar__right__sum}>$Sum$</div>
+class Component extends React.Component {
+  constructor(props) {
+    super(props);
+    this.toggleClass = this.toggleClass.bind(this);
+    this.state = {
+      activeIndex: 0,
+    };
+  }
+
+  toggleClass(i, e) {
+    this.setState({ activeIndex: i });
+  }
+
+  render() {
+    return (
+      <div className={ styles.root }>
+        <div className='container'>
+          <div className={styles.menuBar}>
+            <div className={styles.menuBar__left}>
+              <div
+                className={ this.state.activeIndex === 0 ? 'active' : styles.menuBar__left__item }
+                onClick={this.toggleClass.bind(this, 0)}>
+                <a href='/USA'>USA</a>
+              </div>
+              <div
+                className={ this.state.activeIndex === 1 ? 'active' : styles.menuBar__left__item }
+                onClick={this.toggleClass.bind(this, 1)}>
+                <a href='/germany'>Germany</a>
+              </div>
+              <div
+                className={ this.state.activeIndex === 2 ? 'active' : styles.menuBar__left__item }
+                onClick={this.toggleClass.bind(this, 2)}>
+                <a href='/zsrr'>ZSRR</a>
+              </div>
+              <div
+                className={ this.state.activeIndex === 3 ? 'active' : styles.menuBar__left__item }
+                onClick={this.toggleClass.bind(this, 3)}>
+                <a href='/france'>France</a>
+              </div>
+              <div
+                className={ this.state.activeIndex === 4 ? 'active' : styles.menuBar__left__item }
+                onClick={this.toggleClass.bind(this, 4)}>
+                <a href='/gb'>GB</a>
+              </div>
+              <div
+                className={ this.state.activeIndex === 5 ? 'active' : styles.menuBar__left__item }
+                onClick={this.toggleClass.bind(this, 5)}>
+                <a href='/poland'>Poland</a>
+              </div>
+            </div>
+            <a className={styles.menuBar__linkCart} href='/shop/cart'>
+              <div className={styles.menuBar__right}>
+                <FontAwesomeIcon className={styles.menuBar__right__cart} icon={ faShoppingBasket } />
+                <div className={styles.menuBar__right__sum}>$Sum$</div>
+              </div>
+            </a>
           </div>
-        </a>
+        </div>
       </div>
-    </div>
-  </div>
-);
+    );
+  }
+}
 
 export {
   Component as MenuBar,

@@ -62,3 +62,15 @@
     color: $menuBar-text-color;
   }
 }
+
+/* Active el */
+
+div[class~="active"] {
+  padding: 7.5px 15px;
+  background-color: $hover-color;
+  a {
+    text-decoration: none;
+    font-weight: bold;
+    color: $menuBar-text-color;
+  }
+}
