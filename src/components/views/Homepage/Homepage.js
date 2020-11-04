@@ -5,7 +5,10 @@ import styles from './Homepage.module.scss';
 const Component = () => (
   <div className={ styles.root }>
     <div className='container'>
-      Home Page!
+      <div className={styles.home}>
+        sss
+
+      </div>
     </div>
   </div>
 );

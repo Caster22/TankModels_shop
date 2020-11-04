@@ -1,5 +1,11 @@
 @import '../../../styles/settings.scss';
 
 .root {
+  margin: 20px auto;
+  font-family: $main-font;
+  background-color: darken($menuBar-background, 5%);
+}
+
+.home {
 
 }

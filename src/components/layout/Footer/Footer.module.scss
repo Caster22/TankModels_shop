@@ -10,3 +10,39 @@
   background-color: $footer-darkBackground;
   color: $footer-text-color;
 }
+
+.foot {
+  width: 100%;
+  padding: 25px 0 25px 0;
+  text-align: center;
+  &__newsletterTitle {
+    display: inline-block;
+    margin: 0 30px 0 0;
+    text-transform: uppercase;
+    color: $hover-color;
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  &__newsletterInput {
+    display: inline-block;
+    border-radius: 4px;
+    padding: 7px 0 7px 0;
+  }
+
+  &__newsletterIcon {
+    color: $hover-color;
+    margin-right: 10px;
+  }
+
+  &__newsletterBtn {
+    margin-left: 15px;
+    padding: 8px 13px;
+    border-radius: 4px;
+    background-color: $menuBar-background;
+  }
+
+  &__newsletterLink {
+    color: $hover-color;
+  }
+}
