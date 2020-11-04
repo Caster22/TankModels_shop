@@ -3,8 +3,8 @@ const router = express.Router();
 const GBController = require('../controllers/GB.controller');
 
 
-router.get('/concerts', GBController.getAll);
+router.get('/gb', GBController.getAll);
 
-router.get('/concerts/:id', GBController.getById);
+router.get('/gb/:id', GBController.getById);
 
 module.exports = router;

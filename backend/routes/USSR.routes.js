@@ -3,8 +3,8 @@ const router = express.Router();
 const USSRController = require('../controllers/USSR.controller');
 
 
-router.get('/concerts', USSRController.getAll);
+router.get('/ussr', USSRController.getAll);
 
-router.get('/concerts/:id', USSRController.getById);
+router.get('/ussr/:id', USSRController.getById);
 
 module.exports = router;

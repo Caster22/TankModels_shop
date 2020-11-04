@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './NotFound.module.scss';
+//import styles from './NotFound.module.scss';
 
 const Component = children => (
-  <div className={ styles.root }>
+  <div>
     <h2>Page not found, please Log in</h2>
     {children}
   </div>
