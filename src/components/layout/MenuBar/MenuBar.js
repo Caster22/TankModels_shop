@@ -36,7 +36,7 @@ class Component extends React.Component {
               <div
                 className={ this.state.activeIndex === 2 ? 'active' : styles.menuBar__left__item }
                 onClick={this.toggleClass.bind(this, 2)}>
-                <a href='/zsrr'>ZSRR</a>
+                <a href='/ussr'>U.S.S.R.</a>
               </div>
               <div
                 className={ this.state.activeIndex === 3 ? 'active' : styles.menuBar__left__item }

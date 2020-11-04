@@ -19,6 +19,7 @@
     "@types/react-dom": "^16.9.8",
     "axios": "^0.20.0",
     "bootstrap": "^4.5.2",
+    "dotenv": "^8.2.0",
     "enzyme": "^3.11.0",
     "eslint-watch": "^7.0.0",
     "express": "^4.17.1",
@@ -45,7 +46,7 @@
     "server": "nodemon backend/server.js",
     "build": "react-scripts build",
     "lint": "esw --watch --clear",
-    "test": "react-scripts test --noStackTrace",
+    "test": "set NODE_ENV=production && react-scripts test --noStackTrace",
     "test-all": "react-scripts test --watchAll=false --noStackTrace",
     "test-related": "react-scripts test --watchAll=false --noStackTrace --findRelatedTests",
     "eject": "react-scripts eject"

@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const path = require('path');
 const mongoose = require('mongoose');
+//const dotenv = require('dotenv').config();
 
 /* Routes */
 const mockRoutes = require('./routes/');
@@ -28,7 +29,14 @@ app.use('*', (req, res) => {
 });
 
 /* MONGOOSE */
-mongoose.connect('mongodb://localhost:27017/bulletinBoard', { useNewUrlParser: true, useUnifiedTopology: true });
+/*const DBConnect = {
+  login: process.env.DB_USER,
+  pass: process.env.DB_PASS,
+}*/
+
+const dbURI = process.env.NODE_ENV === 'production' ? `mongodb+srv://${ process.env.DB_PASS }:${ process.env.DB_USER }@cluster0.hud0b.mongodb.net/TankModels?retryWrites=true&w=majority` : `mongodb+srv://${ process.env.Pas }:${ process.env.Log }@cluster0.hud0b.mongodb.net/TankModels?retryWrites=true&w=majority`;
+mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true });
+
 const db = mongoose.connection;
 db.once('open', () => {
   console.log('Successfully connected to the database');
