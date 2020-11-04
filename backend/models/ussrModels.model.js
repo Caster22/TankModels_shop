@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const franceSchema = new mongoose.Schema({
+const ussrModelsSchema = new mongoose.Schema({
   Name: { type: String, required: true },
   Type: { type: String, required: true },
   Description: { type: String, required: true },
@@ -11,4 +11,4 @@ const franceSchema = new mongoose.Schema({
   MetalPrice: { type: String, required: true },
 });
 
-module.exports = mongoose.model('France', franceSchema);
+module.exports = mongoose.model('UssrModel', ussrModelsSchema);

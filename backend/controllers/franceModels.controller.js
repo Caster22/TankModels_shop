@@ -1,8 +1,8 @@
-const France = require('../models/France.model');
+const FranceModel = require('../models/franceModels.model');
 
 exports.getAll = async (req, res) => {
   try {
-    res.json(await France.find());
+    res.json(await FranceModel.find());
   }
   catch(err) {
     res.status(500).json({ message: err });
@@ -11,7 +11,7 @@ exports.getAll = async (req, res) => {
 
 exports.getById = async (req, res) => {
   try {
-    const con = await France.findById(req.params.id);
+    const con = await FranceModel.findById(req.params.id);
     if (!con) res.status(404).json({ message: 'Not found' });
     else res.json(con);
   } catch (err) {

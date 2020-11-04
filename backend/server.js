@@ -5,12 +5,12 @@ const mongoose = require('mongoose');
 require('dotenv').config()
 
 /* Routes */
-const USARoutes = require('./routes/USA.routes');
-const GermanyRoutes = require('./routes/Germany.routes');
-const USSRRoutes = require('./routes/USSR.routes');
-const FranceRoutes = require('./routes/France.routes');
-const GBRoutes = require('./routes/GB.routes');
-const PolandRoutes = require('./routes/Poland.routes');
+const usaRoutes = require('./routes/usaModels.routes');
+const germanyRoutes = require('./routes/germanyModels.routes');
+const ussrRoutes = require('./routes/ussrModels.routes');
+const franceRoutes = require('./routes/franceModels.routes');
+const gbRoutes = require('./routes/gbModels.routes');
+const polandRoutes = require('./routes/polandModels.routes');
 
 const app = express();
 
@@ -20,12 +20,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 /* API ENDPOINTS */
-app.use('/api', USARoutes);
-app.use('/api', GermanyRoutes);
-app.use('/api', USSRRoutes);
-app.use('/api', FranceRoutes);
-app.use('/api', GBRoutes);
-app.use('/api', PolandRoutes);
+app.use('/api', usaRoutes);
+app.use('/api', germanyRoutes);
+app.use('/api', ussrRoutes);
+app.use('/api', franceRoutes);
+app.use('/api', gbRoutes);
+app.use('/api', polandRoutes);
 
 /* API ERROR PAGES */
 app.use('/api', (req, res) => {
@@ -51,9 +51,7 @@ const DBConnect = (login, pass) => {
   }
 }
 
-
-
-const dbURI = `mongodb+srv://${ DBConnect('','') }@cluster0.hud0b.mongodb.net/<dbname>?retryWrites=true&w=majority`;
+const dbURI = 'mongodb+srv://Caster22:polska22@cluster0.hud0b.mongodb.net/TankModelsDB?retryWrites=true&w=majority';
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 const db = mongoose.connection;
