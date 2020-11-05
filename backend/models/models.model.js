@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const polandModelsSchema = new mongoose.Schema({
+const modelsSchema = new mongoose.Schema({
   name: { type: String, required: true },
   type: { type: String, required: true },
   description: { type: String, required: true },
@@ -9,6 +9,7 @@ const polandModelsSchema = new mongoose.Schema({
   plasticPrice: { type: String, required: true },
   woodPrice: { type: String, required: true },
   metalPrice: { type: String, required: true },
+  countries: { type: String, required: true },
 });
 
-module.exports = mongoose.model('PolandModel', polandModelsSchema);
+module.exports = mongoose.model('Model', modelsSchema);

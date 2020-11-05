@@ -46,7 +46,7 @@
     "server": "nodemon backend/server.js",
     "build": "react-scripts build",
     "lint": "esw --watch --clear",
-    "test": "set NODE_ENV=production && react-scripts test --noStackTrace",
+    "test": "react-scripts test --noStackTrace",
     "test-all": "react-scripts test --watchAll=false --noStackTrace",
     "test-related": "react-scripts test --watchAll=false --noStackTrace --findRelatedTests",
     "eject": "react-scripts eject"
