@@ -9,7 +9,7 @@ class Component extends React.Component {
     super(props);
     this.toggleClass = this.toggleClass.bind(this);
     this.state = {
-      activeIndex: 0,
+      activeIndex: 99,
     };
   }
 
@@ -26,7 +26,7 @@ class Component extends React.Component {
               <div
                 className={ this.state.activeIndex === 0 ? 'active' : styles.menuBar__left__item }
                 onClick={this.toggleClass.bind(this, 0)}>
-                <a href='/USA'>USA</a>
+                <a href='/tanks/'>USA</a>
               </div>
               <div
                 className={ this.state.activeIndex === 1 ? 'active' : styles.menuBar__left__item }
