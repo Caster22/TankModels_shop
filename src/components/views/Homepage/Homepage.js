@@ -54,6 +54,32 @@ const Component = () => (
             </div>
           </div>
         </div>
+        <div className='text-center my-5 w-75 mx-auto'>
+          <h2 className='text-center mb-4'>
+            Welcome in our models shop!
+          </h2>
+          <p>
+            Ladies and Gentlemen, our model shop is not only a place where model
+            making takes place. First of all, the unique space and offer,
+            which includes the most modern models. Our Little Metal Army Store
+            consists of people who share a passion for modern structures and machines
+            - miniature, technological works of art.
+          </p>
+          <p>
+            In our shop you will find many popular tank models in scale <strong>1:35 </strong>
+            which could be pre-assembled by us or on your demand dear customer we can send it for you
+            to assembly model by yourself!
+          </p>
+          <p>
+            Our collection of models consist of wide range from many nations like <strong>USA </strong>
+            <strong>Germany </strong><strong>USSR </strong> and many others. This collection have many tanks used
+            in WW2 but also tank that weren’t mass produced or existed only in blueprints!
+          </p>
+          <p>
+            Just navigate in our shop by choosing country origin of tanks in our menu and when ordering choose from what material
+            your tank should be made! We offer <strong>Paper, plastic, wood and metal </strong> models!
+          </p>
+        </div>
       </section>
     </div>
   </div>
