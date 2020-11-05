@@ -2,7 +2,9 @@ const Model = require('../models/models.model');
 
 exports.getAll = async (req, res) => {
   try {
-    res.json(await Model.find());
+    res.json(await Model.find()
+      .populate('country')
+      .select('name image paperPrice metalPrice country'));
   }
   catch(err) {
     res.status(500).json({ message: err });

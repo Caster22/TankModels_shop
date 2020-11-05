@@ -9,7 +9,7 @@ const modelsSchema = new mongoose.Schema({
   plasticPrice: { type: String, required: true },
   woodPrice: { type: String, required: true },
   metalPrice: { type: String, required: true },
-  countries: { type: String, required: true },
+  country: { type: String, required: true, ref: 'Country' },
 });
 
 module.exports = mongoose.model('Model', modelsSchema);
