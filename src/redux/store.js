@@ -4,11 +4,15 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 
 import { initialState } from './initialState';
 import { reducer as PromotionReducer } from './PromotionsRedux';
+import { reducer as ModelsReducer} from './ModelsRedux';
+import { reducer as CountriesReducer } from './CountriesRedux';
 
 
 // define reducers
 const reducers = {
   promotions: PromotionReducer,
+  models: ModelsReducer,
+  countries: CountriesReducer,
 };
 
 // add blank reducers for initial state properties without reducers

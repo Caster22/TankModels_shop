@@ -1,28 +1,105 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './Homepage.module.scss';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLongArrowAltDown } from '@fortawesome/free-solid-svg-icons';
 import { fetchPromotions, getPromotions } from '../../../redux/PromotionsRedux';
 import { connect } from 'react-redux';
+import { fetchAllModels, getAllModels } from '../../../redux/ModelsRedux';
+import { ProductBox} from '../../common/ProductBox/ProductBox';
+import { fetchAllCountries, getAllCountries } from '../../../redux/CountriesRedux';
 
 class Component extends React.Component {
+  state = {
+    activePage: 0,
+    activeCategory: 'USA',
+    productsOnPage: 10,
+  }
 
   componentDidMount() {
-    const { selectedPromotion } = this.props;
+    const { selectedPromotion, fetchModels, fetchCountries } = this.props;
     selectedPromotion();
+    fetchModels();
+    fetchCountries();
+  }
+
+  addClass(domElement, className) {
+    domElement.current.classList.add(className);
+  }
+
+  removeClass(domElement, className) {
+    domElement.current.classList.remove(className);
+  }
+
+  handlePageChange(newPage) {
+    this.setState({ activePage: newPage });
+  }
+
+  handleCategoryChange(newCategory) {
+    this.setState({ activeCategory: newCategory });
+  }
+
+  handleCategoryChangeFade(newCategory, event) {
+    if (event !== undefined) event.preventDefault();
+    this.removeClass(this.props.modelsListRef, styles.fadeIn);
+    this.addClass(this.props.modelsListRef, styles.fadeOut);
+
+    setTimeout(() => {
+      this.handlePageChange(0);
+      this.handleCategoryChange(newCategory);
+      this.addClass(this.props.modelsListRef, styles.fadeIn);
+      this.removeClass(this.props.modelsListRef, styles.fadeOut);
+    }, 1000);
+  }
+
+  handlePageChangeFade(newPage, event) {
+    if (event !== undefined) event.preventDefault();
+    this.removeClass(this.props.modelsListRef, styles.fadeIn);
+    this.addClass(this.props.modelsListRef, styles.fadeOut);
+
+    setTimeout(() => {
+      this.setState({ activePage: newPage });
+      this.addClass(this.props.modelsListRef, styles.fadeIn);
+      this.removeClass(this.props.modelsListRef, styles.fadeOut);
+    }, 1000);
   }
 
   render() {
-    const { promotion } = this.props;
+    const { promotion, models, countries } = this.props;
+    const { activeCategory, activePage, productsOnPage } = this.state;
 
-    if (!promotion) {
+    if (!promotion || !models || !countries) {
+
       return (
         <div className='text-center text-warning pt-5'>
           LOADING DATA...
         </div>
       );
     } else {
+
+      const categoryProducts = models.filter(item => item.country.name === activeCategory);
+      const pagesCount = Math.ceil(categoryProducts.length / productsOnPage);
+
+      const dots = [];
+      for (let i = 0; i < pagesCount; i++) {
+        dots.push(
+          <li key={i}>
+            <a
+              href='/#'
+              onClick={event => this.handlePageChangeFade(i, event)}
+              className={i === activePage ? styles.active : undefined}
+            >
+              page {i}
+            </a>
+          </li>
+        );
+      }
+      const thisModels = this;
+      window.addEventListener('resize', () => {
+        if (pagesCount < activePage) thisModels.handlePageChange(pagesCount - 1);
+      });
+
       return (
         <div className={ styles.root }>
           <div className='container'>
@@ -52,6 +129,55 @@ class Component extends React.Component {
                   Just navigate in our shop by choosing country origin of tanks in our menu and when ordering choose from what material
                   your tank should be made! We offer <strong>Paper, plastic, wood and metal </strong> models!
                 </p>
+              </div>
+
+              <h2 className='text-center mb-4'>
+                <FontAwesomeIcon className='mx-4' icon={ faLongArrowAltDown } />
+                Our Models
+                <FontAwesomeIcon className='mx-4' icon={ faLongArrowAltDown } />
+              </h2>
+              <div className={styles.panelBar}>
+                <div className='row justify-content-center no-gutters align-items-end'>
+                  <div className={'col-12 col-md-3 ' + styles.heading}>
+                    <h3>Our Models</h3>
+                  </div>
+                  <div className={'col-12 col-md-7 ' + styles.menu}>
+                    <ul>
+                      {countries.map(item => (
+                        <li key={item._id}>
+                          <a
+                            href='/#'
+                            className={
+                              item.name === activeCategory ? styles.active : undefined
+                            }
+                            onClick={event =>
+                              this.handleCategoryChangeFade(item.name, event)
+                            }
+                          >
+                            {item.name}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div className={'col-auto ' + styles.dots}>
+                    <ul>{ dots }</ul>
+                  </div>
+                </div>
+              </div>
+              <div className={`row ${styles.fadeIn}`} ref={this.props.modelsListRef}>
+
+              </div>
+              <div className={`col col-sm-12`}>
+                <div className='row'>
+                  {models
+                    .slice(activePage * productsOnPage, (activePage + 1) * productsOnPage)
+                    .map(data => (
+                      <div key={data._id} className='col-lg-3 col-md-4 col-6'>
+                        <ProductBox {...data} />
+                      </div>
+                    ))}
+                </div>
               </div>
               <h2 className='text-center mb-4'>
                 <FontAwesomeIcon className='mx-4' icon={ faLongArrowAltDown } />
@@ -111,14 +237,28 @@ class Component extends React.Component {
 Component.propTypes = {
   promotion: PropTypes.array,
   selectedPromotion: PropTypes.func,
+  fetchModels: PropTypes.func,
+  fetchCountries: PropTypes.func,
+  modelsListRef: PropTypes.object,
+  models: PropTypes.array,
+  countries: PropTypes.array,
+};
+Component.defaultProps = {
+  models: [],
+  countries: [],
+  modelsListRef: React.createRef(),
 };
 
 const mapStateToProps = state => ({
   promotion: getPromotions(state),
+  models: getAllModels(state),
+  countries: getAllCountries(state),
 });
 
 const mapDispatchToProps = dispatch => ({
   selectedPromotion: () => dispatch(fetchPromotions()),
+  fetchModels: () => dispatch(fetchAllModels()),
+  fetchCountries: () => dispatch(fetchAllCountries()),
 });
 
 const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
