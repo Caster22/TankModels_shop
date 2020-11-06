@@ -1,10 +1,10 @@
-//import Axios from 'axios';
+import Axios from 'axios';
 
 /* selectors */
-export const getLogo = ({ logo }) => logo;
+export const getPromotions = ({ promotions }) => promotions.data;
 
 /* action name creator */
-const reducerName = 'placeholder';
+const reducerName = 'promotions';
 const createActionName = name => `app/${reducerName}/${name}`;
 
 
@@ -19,6 +19,22 @@ export const fetchSuccess = payload => ({ payload, type: FETCH_SUCCESS });
 export const fetchError = payload => ({ payload, type: FETCH_ERROR });
 
 /* thunk creators */
+export const fetchPromotions = () => {
+  return (dispatch, getState) => {
+    dispatch(fetchStarted());
+    const state = getState();
+    if(!state.promotions.data) {
+      Axios
+        .get('http://localhost:8000/api/promotions')
+        .then(res => {
+          dispatch(fetchSuccess(res.data));
+        })
+        .catch(err => {
+          dispatch(fetchError(err.message || true));
+        });
+    }
+  };
+};
 
 /* reducer */
 export const reducer = (statePart = [], action = {}) => {

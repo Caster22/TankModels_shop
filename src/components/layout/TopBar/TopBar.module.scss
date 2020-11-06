@@ -5,19 +5,21 @@
   font-family: $main-font;
   background-color: $topBar-background;
   color: $header-text-color;
-  height: 2.5vh;
+  max-height: 40px;
+  height: 40px;
 }
 
 .topBar {
   display: flex;
   align-content: center;
   justify-content: space-between;
-  height: 2.5vh;
+  align-items: center;
+  height: 40px;
 
   .topBar__left {
     a {
       img {
-        height: 2vh;
+        height: 30px;
         filter: invert(88%) sepia(9%) saturate(198%) hue-rotate(189deg) brightness(111%) contrast(90%);
         transition: $transition-color;
       }

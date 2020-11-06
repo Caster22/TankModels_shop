@@ -5,7 +5,7 @@
   font-family: $main-font;
   background-color: $header-background;
   color: $header-text-color;
-  height: 10vh;
+  height: 180px;
 }
 
 
@@ -13,7 +13,7 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
-  height: 10vh;
+  height: 180px;
 
   .company__left {
     font-family: $title-font;
@@ -27,7 +27,7 @@
 
   .company__middle {
     img {
-      height: 9vh;
+      height: 140px;
       transition: $transition-color;
       &:hover {
         transition: $transition-color;

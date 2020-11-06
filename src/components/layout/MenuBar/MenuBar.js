@@ -26,32 +26,32 @@ class Component extends React.Component {
               <div
                 className={ this.state.activeIndex === 0 ? 'active' : styles.menuBar__left__item }
                 onClick={this.toggleClass.bind(this, 0)}>
-                <a href='/tanks/'>USA</a>
+                <a href='/tanks/usa'>USA</a>
               </div>
               <div
                 className={ this.state.activeIndex === 1 ? 'active' : styles.menuBar__left__item }
                 onClick={this.toggleClass.bind(this, 1)}>
-                <a href='/germany'>Germany</a>
+                <a href='/tanks/germany'>Germany</a>
               </div>
               <div
                 className={ this.state.activeIndex === 2 ? 'active' : styles.menuBar__left__item }
                 onClick={this.toggleClass.bind(this, 2)}>
-                <a href='/ussr'>U.S.S.R.</a>
+                <a href='/tanks/ussr'>U.S.S.R.</a>
               </div>
               <div
                 className={ this.state.activeIndex === 3 ? 'active' : styles.menuBar__left__item }
                 onClick={this.toggleClass.bind(this, 3)}>
-                <a href='/france'>France</a>
+                <a href='/tanks/france'>France</a>
               </div>
               <div
                 className={ this.state.activeIndex === 4 ? 'active' : styles.menuBar__left__item }
                 onClick={this.toggleClass.bind(this, 4)}>
-                <a href='/gb'>GB</a>
+                <a href='/tanks/gb'>GB</a>
               </div>
               <div
                 className={ this.state.activeIndex === 5 ? 'active' : styles.menuBar__left__item }
                 onClick={this.toggleClass.bind(this, 5)}>
-                <a href='/poland'>Poland</a>
+                <a href='/tanks/poland'>Poland</a>
               </div>
             </div>
             <a className={styles.menuBar__linkCart} href='/shop/cart'>
