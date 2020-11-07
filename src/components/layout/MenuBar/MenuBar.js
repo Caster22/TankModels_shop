@@ -5,9 +5,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingBasket } from '@fortawesome/free-solid-svg-icons';
 
 class Component extends React.Component {
-  constructor(props) {
-    super(props);
-  }
 
   render() {
     const { sum } = this.props;

@@ -12,6 +12,7 @@ import { store } from './redux/store.js';
 import { MainLayout } from './components/layout/MainLayout/MainLayout';
 import { Homepage } from './components/views/Homepage/Homepage';
 import { NotFound } from './components/views/NotFound/NotFound';
+import { ModelView } from './components/views/ModelView/ModelView';
 
 const theme = createMuiTheme({
   palette: {
@@ -28,7 +29,7 @@ const App = () => (
           <MainLayout>
             <Switch>
               <Route exact path='/' component={ Homepage } />
-              <Route exact path='/models/:id' component={ Homepage } />
+              <Route exact path='/models/:id' component={ ModelView } />
               <Route path='*' component={ NotFound } />
             </Switch>
           </MainLayout>
