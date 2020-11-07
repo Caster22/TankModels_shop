@@ -30,7 +30,17 @@
     .buttons {
       opacity: 0;
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
+      a {
+        color: $homepage-text-color;
+        text-shadow: 1px 1px 1px $homepage-title-color;
+        span {
+          padding-right: 10px;
+        }
+        &:hover {
+          text-decoration: none;
+        }
+      }
     }
 
     .image {
@@ -46,9 +56,11 @@
 
     h5 {
       color: $homepage-title-color;
-      font-size: 16px;
+      font-size: 22px;
       line-height: 24px;
       letter-spacing: 1px;
+      height: 50px;
+      font-weight: bold;
     }
 
     .stars {
@@ -89,6 +101,8 @@
 
   .price {
     display: flex;
+    font-weight: bold;
+    color: $homepage-text-color;
   }
 
   .priceButton {
@@ -100,20 +114,6 @@
     }
 
     .priceButton {
-      background-color: $homepage-title-color;
-    }
-  }
-
-  .oldPriceButton {
-    position: relative;
-    text-decoration: line-through;
-    background-color: $homepage-background;
-    color: $main-background;
-  }
-
-  .favoriteButton {
-    &.active {
-      color: $homepage-background;
       background-color: $homepage-title-color;
     }
   }

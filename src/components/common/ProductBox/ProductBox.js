@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 
 import styles from './ProductBox.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faShoppingBasket } from '@fortawesome/free-solid-svg-icons';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
-const Component = ({ _id, name, type, image, paperPrice/*, plasticPrice, woodPrice, metalPrice, country*/ }) => (
+const Component = ({ _id, name, type, image, paperPrice, metalPrice }) => (
   <div className={styles.root}>
     <div className={styles.photo}>
       {type && <div className={styles.sale}>promo</div>}
@@ -14,12 +14,9 @@ const Component = ({ _id, name, type, image, paperPrice/*, plasticPrice, woodPri
       </a>
       <div className={styles.buttons}>
         <a href={'/models/' + _id} >
-          Quick View
+          <span>Quick View</span>
+          <FontAwesomeIcon icon={ faSearch } />
         </a>
-        <button>
-          <FontAwesomeIcon icon={faShoppingBasket}/>
-          ADD TO CART
-        </button>
       </div>
     </div>
     <div className={styles.content}>
@@ -30,9 +27,10 @@ const Component = ({ _id, name, type, image, paperPrice/*, plasticPrice, woodPri
       <div className={styles.outlines}>
       </div>
       <div className={styles.price}>
-        <button className={styles.priceButton}>
-          { paperPrice }
-        </button>
+        <div className='row'>
+          <p className='col-12 text-center'>Price range: </p>
+          <span className='col-12 text-center'>{ paperPrice }$ - { metalPrice }$</span>
+        </div>
       </div>
     </div>
   </div>
@@ -45,6 +43,7 @@ Component.propTypes = {
   type: PropTypes.string,
   image: PropTypes.string,
   paperPrice: PropTypes.string,
+  metalPrice: PropTypes.string,
 };
 
 export {

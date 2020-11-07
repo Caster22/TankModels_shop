@@ -50,7 +50,7 @@ class Component extends React.Component {
       this.handleCategoryChange(newCategory);
       this.addClass(this.props.modelsListRef, styles.fadeIn);
       this.removeClass(this.props.modelsListRef, styles.fadeOut);
-    }, 1000);
+    }, 500);
   }
 
   handlePageChangeFade(newPage, event) {
@@ -62,7 +62,7 @@ class Component extends React.Component {
       this.setState({ activePage: newPage });
       this.addClass(this.props.modelsListRef, styles.fadeIn);
       this.removeClass(this.props.modelsListRef, styles.fadeOut);
-    }, 1000);
+    }, 500);
   }
 
   render() {
@@ -126,7 +126,6 @@ class Component extends React.Component {
                   your tank should be made! We offer <strong>Paper, plastic, wood and metal </strong> models!
                 </p>
               </div>
-
               <h2 className='text-center mb-4'>
                 <FontAwesomeIcon className='mx-4' icon={ faLongArrowAltDown } />
                 Our Models
@@ -134,9 +133,6 @@ class Component extends React.Component {
               </h2>
               <div className={styles.panelBar}>
                 <div className='row justify-content-center no-gutters align-items-end'>
-                  <div className={'col-12 col-md-3 ' + styles.heading}>
-                    <h3>Our Models</h3>
-                  </div>
                   <div className={'col-12 col-md-7 ' + styles.menu}>
                     <ul>
                       {countries.map(item => (
@@ -162,7 +158,6 @@ class Component extends React.Component {
                 </div>
               </div>
               <div className={`row ${styles.fadeIn}`} ref={this.props.modelsListRef}>
-
               </div>
               <div className={`col col-sm-12`}>
                 <div className='row'>
@@ -175,7 +170,7 @@ class Component extends React.Component {
                     ))}
                 </div>
               </div>
-              <h2 className='text-center mb-4'>
+              <h2 className='text-center my-5'>
                 <FontAwesomeIcon className='mx-4' icon={ faLongArrowAltDown } />
                 Promotion of the Month!
                 <FontAwesomeIcon className='mx-4' icon={ faLongArrowAltDown } />
