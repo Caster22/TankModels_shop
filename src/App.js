@@ -28,9 +28,7 @@ const App = () => (
           <MainLayout>
             <Switch>
               <Route exact path='/' component={ Homepage } />
-              <Route exact path='/post/add' component={ NotFound } />
-              <Route exact path='/post/:id' component={ NotFound } />
-              <Route exact path='/post/:id/edit' component={ NotFound } />
+              <Route exact path='/models/:id' component={ Homepage } />
               <Route path='*' component={ NotFound } />
             </Switch>
           </MainLayout>

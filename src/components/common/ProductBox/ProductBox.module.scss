@@ -53,6 +53,11 @@
   .content {
     text-align: center;
     padding: 20px;
+    a {
+      &:hover {
+        text-decoration: none;
+      }
+    }
 
     h5 {
       color: $homepage-title-color;

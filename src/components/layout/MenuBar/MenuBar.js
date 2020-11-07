@@ -1,5 +1,5 @@
 import React from 'react';
-//import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import styles from './MenuBar.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingBasket } from '@fortawesome/free-solid-svg-icons';
@@ -7,57 +7,18 @@ import { faShoppingBasket } from '@fortawesome/free-solid-svg-icons';
 class Component extends React.Component {
   constructor(props) {
     super(props);
-    this.toggleClass = this.toggleClass.bind(this);
-    this.state = {
-      activeIndex: 99,
-    };
-  }
-
-  toggleClass(i, e) {
-    this.setState({ activeIndex: i });
   }
 
   render() {
+    const { sum } = this.props;
     return (
       <div className={ styles.root }>
         <div className='container'>
           <div className={styles.menuBar}>
-            <div className={styles.menuBar__left}>
-              <div
-                className={ this.state.activeIndex === 0 ? 'active' : styles.menuBar__left__item }
-                onClick={this.toggleClass.bind(this, 0)}>
-                <a href='/tanks/usa'>USA</a>
-              </div>
-              <div
-                className={ this.state.activeIndex === 1 ? 'active' : styles.menuBar__left__item }
-                onClick={this.toggleClass.bind(this, 1)}>
-                <a href='/tanks/germany'>Germany</a>
-              </div>
-              <div
-                className={ this.state.activeIndex === 2 ? 'active' : styles.menuBar__left__item }
-                onClick={this.toggleClass.bind(this, 2)}>
-                <a href='/tanks/ussr'>U.S.S.R.</a>
-              </div>
-              <div
-                className={ this.state.activeIndex === 3 ? 'active' : styles.menuBar__left__item }
-                onClick={this.toggleClass.bind(this, 3)}>
-                <a href='/tanks/france'>France</a>
-              </div>
-              <div
-                className={ this.state.activeIndex === 4 ? 'active' : styles.menuBar__left__item }
-                onClick={this.toggleClass.bind(this, 4)}>
-                <a href='/tanks/gb'>GB</a>
-              </div>
-              <div
-                className={ this.state.activeIndex === 5 ? 'active' : styles.menuBar__left__item }
-                onClick={this.toggleClass.bind(this, 5)}>
-                <a href='/tanks/poland'>Poland</a>
-              </div>
-            </div>
-            <a className={styles.menuBar__linkCart} href='/shop/cart'>
+            <a className={styles.menuBar__linkCart} href='/orders/cart'>
               <div className={styles.menuBar__right}>
                 <FontAwesomeIcon className={styles.menuBar__right__cart} icon={ faShoppingBasket } />
-                <div className={styles.menuBar__right__sum}>$Sum$</div>
+                <div className={styles.menuBar__right__sum}>{ !sum ? '0$' : sum}</div>
               </div>
             </a>
           </div>
@@ -66,6 +27,13 @@ class Component extends React.Component {
     );
   }
 }
+Component.propTypes = {
+  sum: PropTypes.string,
+};
+
+Component.defaultProps = {
+  sum: '',
+};
 
 export {
   Component as MenuBar,

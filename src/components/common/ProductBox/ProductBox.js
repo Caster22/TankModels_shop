@@ -20,7 +20,9 @@ const Component = ({ _id, name, type, image, paperPrice, metalPrice }) => (
       </div>
     </div>
     <div className={styles.content}>
-      <h5>{ name }</h5>
+      <a href={'/models/' + _id}>
+        <h5>{ name }</h5>
+      </a>
     </div>
     <div className={styles.line}></div>
     <div className={styles.actions}>
