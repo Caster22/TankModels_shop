@@ -14,7 +14,7 @@ class Component extends React.Component {
   state = {
     activePage: 0,
     activeCategory: 'USA',
-    productsOnPage: 10,
+    productsOnPage: 8,
   }
 
   componentDidMount() {
@@ -80,7 +80,7 @@ class Component extends React.Component {
 
       const categoryProducts = models.filter(item => item.country.name === activeCategory);
       const pagesCount = Math.ceil(categoryProducts.length / productsOnPage);
-
+      console.log(pagesCount,' = ', categoryProducts.length, '/',productsOnPage );
       const dots = [];
       for (let i = 0; i < pagesCount; i++) {
         dots.push(
@@ -95,10 +95,6 @@ class Component extends React.Component {
           </li>
         );
       }
-      const thisModels = this;
-      window.addEventListener('resize', () => {
-        if (pagesCount < activePage) thisModels.handlePageChange(pagesCount - 1);
-      });
 
       return (
         <div className={ styles.root }>
@@ -170,7 +166,7 @@ class Component extends React.Component {
               </div>
               <div className={`col col-sm-12`}>
                 <div className='row'>
-                  {models
+                  {categoryProducts
                     .slice(activePage * productsOnPage, (activePage + 1) * productsOnPage)
                     .map(data => (
                       <div key={data._id} className='col-lg-3 col-md-4 col-6'>
