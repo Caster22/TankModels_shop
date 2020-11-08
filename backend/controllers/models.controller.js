@@ -13,7 +13,7 @@ exports.getAll = async (req, res) => {
 
 exports.getById = async (req, res) => {
   try {
-    const con = await Model.findById(req.params.id);
+    const con = await Model.findById(req.params.id).populate('country');
     if (!con) res.status(404).json({ message: 'Not found' });
     else res.json(con);
   } catch (err) {

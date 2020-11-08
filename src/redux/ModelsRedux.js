@@ -2,6 +2,7 @@ import Axios from 'axios';
 
 /* selectors */
 export const getAllModels = ({ models }) => models.data;
+export const getModelById = ({ models }, modelId)  => models.data.filter(model => model._id === modelId)[0];
 
 /* action name creator */
 const reducerName = 'models';
@@ -32,6 +33,19 @@ export const fetchAllModels = () => {
         .catch(err => {
           dispatch(fetchError(err.message || true));
         });
+    }
+  };
+};
+
+export const fetchSelectedModel = (id) => {
+  return async dispatch => {
+    dispatch(fetchStarted());
+    try {
+      let res = await Axios.get(`http://localhost:8000/api/models/${id}`);
+      await new Promise((resolve, reject) => resolve());
+      dispatch(fetchSuccess(res.data));
+    } catch(err) {
+      dispatch(fetchError(err.message || true));
     }
   };
 };

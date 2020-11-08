@@ -1,6 +1,9 @@
 import React from 'react';
-//import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import styles from './ModelView.module.scss';
+
+import { connect } from 'react-redux';
+
 
 import {
   faArrowLeft,
@@ -21,9 +24,19 @@ import {
   faLinkedinIn,
 } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { fetchSelectedModel, getAllModels } from '../../../redux/ModelsRedux';
 
 class Component extends React.Component {
+
+  componentDidMount = () => {
+    const { selectedModel } = this.props;
+
+    selectedModel(this.props.match.params.id);
+  }
+
   render() {
+    const { model } = this.props;
+    console.log('id:', model);
     return (
       <div className={styles.root}>
         <div className='container'>
@@ -190,11 +203,28 @@ class Component extends React.Component {
 }
 
 Component.propTypes = {
-
+  selectedModel: PropTypes.func,
+  model: PropTypes.object,
+  match: PropTypes.object,
 };
 
+Component.defaultProps = {
+  model: {},
+};
+
+const mapStateToProps = state => ({
+  model: getAllModels(state),
+});
+
+const mapDispatchToProps = dispatch => ({
+  selectedModel: id => dispatch(fetchSelectedModel(id)),
+});
+
+const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
+
+
 export {
-  Component as ModelView,
-  //Container as ModelView,
+  //Component as ModelView,
+  Container as ModelView,
   Component as ModelViewComponent,
 };
