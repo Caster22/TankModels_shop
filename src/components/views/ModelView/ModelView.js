@@ -2,29 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './ModelView.module.scss';
 
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
+import {faMinus, faPlus, faShoppingBasket} from '@fortawesome/free-solid-svg-icons';
+import {faEnvelope} from '@fortawesome/free-regular-svg-icons';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {fetchSelectedModel, getAllModels} from '../../../redux/ModelsRedux';
+import ImageSlider from '../../Features/Slider/Slider';
 
-
-import {
-  faArrowLeft,
-  faArrowRight,
-  faShoppingBasket,
-  faMinus,
-  faPlus,
-  faExpandAlt,
-} from '@fortawesome/free-solid-svg-icons';
-import {
-  faEnvelope,
-} from '@fortawesome/free-regular-svg-icons';
-import {
-  faFacebookF,
-  faGooglePlusG,
-  faTwitter,
-  faPinterestP,
-  faLinkedinIn,
-} from '@fortawesome/free-brands-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { fetchSelectedModel, getAllModels } from '../../../redux/ModelsRedux';
+const img1 = 'https://n7.nextpng.com/sticker-png/1004/477/sticker-png-world-of-tanks-blitz-kv-2-kv-1-wot-tiger-131-game-self-propelled-artillery-vehicle-desktop-wallpaper.png';
+const img2 = 'https://c0.klipartz.com/pngpicture/767/447/gratis-png-stridsvagn-103-churchill-tank-world-of-tanks-tank-destructor-tank.png';
+const img3 = 'https://b7.pngbarn.com/png/225/18/world-of-tanks-germany-self-propelled-gun-tank-destroyer-tank-png-clip-art.png';
 
 class Component extends React.Component {
 
@@ -34,38 +21,29 @@ class Component extends React.Component {
     selectedModel(this.props.match.params.id);
   }
 
+  mockArrayGallery = (images) => {
+    const { model } = this.props;
+    if (!model.image){
+      return <div>Loading</div>;
+    }
+    else {
+      return [images, img1, img2, img3];
+    }
+  }
+
   render() {
     const { model } = this.props;
-    console.log('id:', model);
+
     return (
       <div className={styles.root}>
         <div className='container'>
           <div className={styles.frame}>
             <div className='row'>
               <div className='col-5'>
-                <div className='row'>
+                <div className='row my-5 py-5'>
                   <div className='col-12'>
                     <div className={styles.bigPic}>
-                      <img alt='' />
-                      <button className={styles.biggerImg}>
-                        <FontAwesomeIcon icon={faExpandAlt} />
-                      </button>
-                    </div>
-                  </div>
-                  <div className='col-12'>
-                    <div className={styles.slide}>
-                      <div className={styles.slideGallery}>
-                        <button className={styles.buttonLeft}>
-                          <FontAwesomeIcon icon={faArrowLeft}/>
-                        </button>
-                        <img alt='' />
-                        <img alt='' />
-                        <img alt='' />
-                        <img alt='' />
-                        <button className={styles.buttonRight}>
-                          <FontAwesomeIcon icon={faArrowRight}/>
-                        </button>
-                      </div>
+                      <ImageSlider images={this.mockArrayGallery(model.image)}/>
                     </div>
                   </div>
                 </div>
@@ -77,13 +55,13 @@ class Component extends React.Component {
                       <div className='row'>
                         <div className='col-12'>
                           <div className={styles.lvlOne}>
-                            <div className={styles.title}>Sunbaby Magic Bear Chair</div>
+                            <div className={styles.title}>{ model.name }</div>
                           </div>
                         </div>
                         <div className='col-12'>
                           <div className={styles.lvlOne2}>
                             <div className={styles.rating}>
-                              <span className={styles.views}>(0 reviews)</span>
+                              <span className={styles.origin}>{!model.country ? '' : 'Origin: ' + model.country.name}</span>
                             </div>
                           </div>
                         </div>
@@ -93,8 +71,17 @@ class Component extends React.Component {
                   <div className='col-12'>
                     <div className={styles.lvl + ' ' + styles.shorterLvl}>
                       <div className={styles.lvlTwo}>
-                        <div className={styles.newPrice}>
-                          123$
+                        <div className={styles.price}>
+                          Paper: {model.paperPrice}$
+                        </div>
+                        <div className={styles.price}>
+                          Plastic: {model.plasticPrice}$
+                        </div>
+                        <div className={styles.price}>
+                          Wood: {model.woodPrice}$
+                        </div>
+                        <div className={styles.price}>
+                          Metal: {model.metalPrice}$
                         </div>
                       </div>
                     </div>
@@ -131,7 +118,7 @@ class Component extends React.Component {
                     </div>
                   </div>
                   <div className='col-12'>
-                    <div className={styles.lvl}>
+                    <div className={styles.lvl + ' ' + styles.longerLvl}>
                       <div className='row'>
                         <div className='col-12'>
                           <div className={styles.lvlFour}>
@@ -140,16 +127,14 @@ class Component extends React.Component {
                         </div>
                         <div className='col-12'>
                           <div className={styles.lvlFour2}>
-                            There are many variations of passages of Lorem Ipsum
-                            available, but the majority have suffered alteration in some
-                            form, by injected humour.
+                            {model.description}
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
                   <div className='col-12'>
-                    <div className={styles.lvl}>
+                    <div className={styles.lvl + ' ' + styles.lastLvl}>
                       <div className='row'>
                         <div className='col-12'>
                           <div className={styles.lvlFive}>
@@ -160,35 +145,9 @@ class Component extends React.Component {
                         <div className='col-12'>
                           <div className={styles.lvlFive}>
                             <div>Category:</div>
-                            <span>Furniture</span>
+                            <span>{model.type}</span>
                           </div>
                         </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className='col-12'>
-                    <div className={styles.lvl + ' ' + styles.lastLvl}>
-                      <div className={styles.lvlSix}>
-                        <button className={styles.facebook}>
-                          <FontAwesomeIcon icon={faFacebookF} />
-                          <span>Share</span>
-                        </button>
-                        <button className={styles.google}>
-                          <FontAwesomeIcon icon={faGooglePlusG} />
-                          <span>Google+</span>
-                        </button>
-                        <button className={styles.twitter}>
-                          <FontAwesomeIcon icon={faTwitter} />
-                          <span>Tweet</span>
-                        </button>
-                        <button className={styles.pinterest}>
-                          <FontAwesomeIcon icon={faPinterestP} />
-                          <span>Pinterest</span>
-                        </button>
-                        <button className={styles.linkedin}>
-                          <FontAwesomeIcon icon={faLinkedinIn} />
-                          <span>Linkedin</span>
-                        </button>
                       </div>
                     </div>
                   </div>
