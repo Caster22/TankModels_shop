@@ -40,7 +40,7 @@ const ImageSlider = ({ images }) => { // takes in images as props
 };
 
 ImageSlider.propTypes = {
-  images: PropTypes.array,
+  images: PropTypes.any,
 };
 
 export default ImageSlider;

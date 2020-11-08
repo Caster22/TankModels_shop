@@ -14,6 +14,13 @@ const img2 = 'https://c0.klipartz.com/pngpicture/767/447/gratis-png-stridsvagn-1
 const img3 = 'https://b7.pngbarn.com/png/225/18/world-of-tanks-germany-self-propelled-gun-tank-destroyer-tank-png-clip-art.png';
 
 class Component extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      quantity: 1,
+      price: '0$',
+    };
+  }
 
   componentDidMount = () => {
     const { selectedModel } = this.props;
@@ -29,6 +36,11 @@ class Component extends React.Component {
     else {
       return [images, img1, img2, img3];
     }
+  }
+
+  changeQuantity = plusMinus => {
+    if (plusMinus === '-' && this.state.quantity >= 1) this.setState({ quantity: this.state.quantity - 1 });
+    else if (plusMinus === '+' && this.state.quantity < 9) this.setState({ quantity: this.state.quantity + 1 });
   }
 
   render() {
@@ -92,27 +104,34 @@ class Component extends React.Component {
                         <div className='col-12'>
                           <div className={styles.lvlThree}>
                             <button>
-                              <FontAwesomeIcon
-                                icon={faShoppingBasket}/>
-                              <strong>ADD TO CART</strong>
-                            </button>
-                            <button>
                               <FontAwesomeIcon icon={faEnvelope}/>
                               <strong>ASK ABOUT PRODUCT</strong>
                             </button>
                           </div>
                         </div>
                         <div className='col-12'>
-                          <div className={styles.lvlThree}>
+                          <form className={styles.lvlThree}>
                             <div className={styles.quant}>Quantity: </div>
-                            <button className={styles.number}>2</button>
-                            <button>
+                            <div className={styles.number}>{this.state.quantity}</div>
+                            <button >
                               <FontAwesomeIcon icon={faMinus}/>
                             </button>
                             <button>
                               <FontAwesomeIcon icon={faPlus}/>
                             </button>
-                          </div>
+                            <div className='mr-5 ml-3'>
+                              <select defaultValue='paperPrice'>
+                                <option name='Paper' key='paperPrice' value={model.paperPrice}>Paper</option>
+                                <option name='Plastic' key='plasticPrice' value={model.plasticPrice}>Plastic</option>
+                                <option name='Wood' key='woodPrice' value={model.woodPrice}>Wood</option>
+                                <option name='Metal' key='metalPrice' value={model.metalPrice}>Metal</option>
+                              </select>
+                            </div>
+                            <button type='submit'>
+                              <FontAwesomeIcon icon={faShoppingBasket}/>
+                              <strong>ADD TO CART</strong>
+                            </button>
+                          </form>
                         </div>
                       </div>
                     </div>
