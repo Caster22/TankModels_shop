@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+//import PropTypes from 'prop-types';
 import styles from './ShoppingCart.module.scss';
 
 class Component extends React.Component {
@@ -7,7 +7,7 @@ class Component extends React.Component {
     return (
       <div className={styles.root}>
         <div className='container my-5'>
-          Shopping cart
+          Shopping carts
 
         </div>
       </div>
@@ -15,7 +15,6 @@ class Component extends React.Component {
   }
 }
 
-Component.propTypes = {};
 
 export {
   Component as ShoppingCart,

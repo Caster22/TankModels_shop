@@ -1,11 +1,13 @@
 @import '../../../styles/settings.scss';
 
 .root {
+  position: absolute;
   width: 100%;
   margin: auto;
   font-family: $main-font;
   background-color: $footer-darkBackground;
   color: $footer-text-color;
+  bottom: 0;
 }
 
 .foot {

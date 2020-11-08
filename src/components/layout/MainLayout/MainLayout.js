@@ -6,8 +6,10 @@ import { Footer } from '../Footer/Footer';
 
 const Component =  ({ children }) => (
   <div className={ styles.root }>
-    <Header />
-    { children }
+    <div className={styles.contentWrap}>
+      <Header />
+      { children }
+    </div>
     <Footer />
   </div>
 );

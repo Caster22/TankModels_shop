@@ -1,21 +1,35 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+//import PropTypes from 'prop-types';
 import styles from './MenuBar.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingBasket } from '@fortawesome/free-solid-svg-icons';
 
 class Component extends React.Component {
+  constructor(props) {
+    super(props);
+    this.cartItem = JSON.parse(localStorage.getItem('cartItem'));
+  }
+  componentDidMount() {
+
+  }
+
+  priceSum = () => {
+    if (!this.cartItem) return '--$';
+    else{
+      const sum = this.cartItem.quantity * this.cartItem.basePrice;
+      return sum + '$';
+    }
+  }
 
   render() {
-    const { sum } = this.props;
     return (
       <div className={ styles.root }>
         <div className='container'>
           <div className={styles.menuBar}>
-            <a className={styles.menuBar__linkCart} href='/orders/cart'>
+            <a className={styles.menuBar__linkCart} href='/cart'>
               <div className={styles.menuBar__right}>
                 <FontAwesomeIcon className={styles.menuBar__right__cart} icon={ faShoppingBasket } />
-                <div className={styles.menuBar__right__sum}>{ !sum ? '0$' : sum}</div>
+                <div className={styles.menuBar__right__sum}>{ this.priceSum()}</div>
               </div>
             </a>
           </div>
@@ -24,9 +38,6 @@ class Component extends React.Component {
     );
   }
 }
-Component.propTypes = {
-  sum: PropTypes.string,
-};
 
 Component.defaultProps = {
   sum: '',

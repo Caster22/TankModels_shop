@@ -40,6 +40,9 @@
 
   &__linkCart {
     color: $menuBar-text-color;
+    &:hover {
+      text-decoration: none;
+    }
   }
 }
 

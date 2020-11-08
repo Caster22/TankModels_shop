@@ -14,12 +14,33 @@ const img2 = 'https://c0.klipartz.com/pngpicture/767/447/gratis-png-stridsvagn-1
 const img3 = 'https://b7.pngbarn.com/png/225/18/world-of-tanks-germany-self-propelled-gun-tank-destroyer-tank-png-clip-art.png';
 
 class Component extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      quantity: 1,
-      price: '0$',
-    };
+  state = {
+    quantity: 1,
+    price: '',
+  }
+
+  changeQuantity = (plusMinus, e) => {
+    e.preventDefault();
+    if (plusMinus === '-' && this.state.quantity > 1) this.setState({ quantity: this.state.quantity - 1 });
+    else if (plusMinus === '+' && this.state.quantity < 9) this.setState({ quantity: this.state.quantity + 1 });
+  }
+
+  changePrice = (price, e) => {
+    e.preventDefault();
+    this.setState({ price: price});
+  }
+
+  sendToCart = (model, e) => {
+    if(!this.state.price) console.log('error');
+    else {
+      const cartItem = {
+        item: model,
+        quantity: this.state.quantity,
+        basePrice: this.state.price,
+      };
+      console.log('item:', cartItem);
+      localStorage.setItem('cartItem', JSON.stringify(cartItem));
+    }
   }
 
   componentDidMount = () => {
@@ -36,11 +57,6 @@ class Component extends React.Component {
     else {
       return [images, img1, img2, img3];
     }
-  }
-
-  changeQuantity = plusMinus => {
-    if (plusMinus === '-' && this.state.quantity >= 1) this.setState({ quantity: this.state.quantity - 1 });
-    else if (plusMinus === '+' && this.state.quantity < 9) this.setState({ quantity: this.state.quantity + 1 });
   }
 
   render() {
@@ -113,21 +129,22 @@ class Component extends React.Component {
                           <form className={styles.lvlThree}>
                             <div className={styles.quant}>Quantity: </div>
                             <div className={styles.number}>{this.state.quantity}</div>
-                            <button >
+                            <button onClick={event => this.changeQuantity('-', event)}>
                               <FontAwesomeIcon icon={faMinus}/>
                             </button>
-                            <button>
+                            <button onClick={event => this.changeQuantity('+', event)}>
                               <FontAwesomeIcon icon={faPlus}/>
                             </button>
                             <div className='mr-5 ml-3'>
-                              <select defaultValue='paperPrice'>
+                              <select onChange={event => this.changePrice(event.currentTarget.value, event)}>
+                                <option name='' key='' value=''>---</option>
                                 <option name='Paper' key='paperPrice' value={model.paperPrice}>Paper</option>
                                 <option name='Plastic' key='plasticPrice' value={model.plasticPrice}>Plastic</option>
                                 <option name='Wood' key='woodPrice' value={model.woodPrice}>Wood</option>
                                 <option name='Metal' key='metalPrice' value={model.metalPrice}>Metal</option>
                               </select>
                             </div>
-                            <button type='submit'>
+                            <button onClick={event => this.sendToCart(model, event)} type='submit'>
                               <FontAwesomeIcon icon={faShoppingBasket}/>
                               <strong>ADD TO CART</strong>
                             </button>

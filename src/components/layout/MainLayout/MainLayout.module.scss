@@ -2,6 +2,11 @@
 
 .root {
   margin: auto;
+  position: relative;
+  min-height: 100vh;
   font-family: $main-font;
   background-color: $menuBar-background;
+  .contentWrap {
+    padding-bottom: 400px;
+  }
 }

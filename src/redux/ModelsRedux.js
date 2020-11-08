@@ -37,6 +37,7 @@ export const fetchAllModels = () => {
   };
 };
 
+
 export const fetchSelectedModel = (id) => {
   return async dispatch => {
     dispatch(fetchStarted());
