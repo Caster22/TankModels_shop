@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './ShoppingCart.module.scss';
-import { getCartItems } from '../../../redux/CartRedux';
+import {addItem, getCartItems, minusQuantity, plusQuantity} from '../../../redux/CartRedux';
 import { connect } from 'react-redux';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faMinus, faPlus} from '@fortawesome/free-solid-svg-icons';
@@ -20,9 +20,19 @@ class Component extends React.Component {
     return sum;
   }
 
-  quantityMath = () => {
+  quantityMath = (plusMinus, modelId, e) => {
+    e.preventDefault();
 
-  }
+    const id = {
+      id: modelId,
+    };
+
+    if (plusMinus === '-') {
+      this.props.minus(id);
+    } else if (plusMinus === '+') {
+      this.props.plus(id);
+    }
+  };
 
   render() {
     const { items } = this.props.cartItems;
@@ -40,10 +50,10 @@ class Component extends React.Component {
                       <h4>{item.model}</h4>
                       <span>Quantity:</span>
                       <div className={styles.number}>{quantity === 0 ? item.quantity : this.quantityMath()}</div>
-                      <button  onClick={event => this.changeQuantity('-', event)}>
+                      <button  onClick={event => this.quantityMath('-', item.id, event)}>
                         <FontAwesomeIcon icon={faMinus}/>
                       </button>
-                      <button onClick={event => this.changeQuantity('+', event)}>
+                      <button onClick={event => this.quantityMath('+', item.id, event)}>
                         <FontAwesomeIcon icon={faPlus}/>
                       </button>
                     </div>
@@ -78,6 +88,8 @@ class Component extends React.Component {
 
 Component.propTypes = {
   cartItems: PropTypes.object,
+  minus: PropTypes.func,
+  plus: PropTypes.func,
 };
 
 
@@ -89,11 +101,12 @@ const mapStateToProps = state => ({
   cartItems: getCartItems(state),
 });
 
-/*const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = dispatch => ({
+  plus: value => dispatch(plusQuantity(value)),
+  minus: value => dispatch(minusQuantity(value)),
+});
 
-});*/
-
-const Container = connect(mapStateToProps)(Component);
+const Container = connect(mapStateToProps, mapDispatchToProps())(Component);
 
 export {
   //Component as Cart,
