@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import { TopBar } from './TopBar';
 
 
-describe('Header', () => {
+describe('TopBar', () => {
   it('renders without crashing', () => {
     shallow(<TopBar />);
   });

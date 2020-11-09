@@ -3,6 +3,8 @@ import React from 'react';
 import styles from './MenuBar.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingBasket } from '@fortawesome/free-solid-svg-icons';
+import {getCartItems} from '../../../redux/CartRedux';
+import {connect} from 'react-redux';
 
 class Component extends React.Component {
   constructor(props) {
@@ -22,6 +24,8 @@ class Component extends React.Component {
   }
 
   render() {
+    //console.log('cart: ', this.props.cart.item);
+
     return (
       <div className={ styles.root }>
         <div className='container'>
@@ -39,12 +43,23 @@ class Component extends React.Component {
   }
 }
 
+
 Component.defaultProps = {
   sum: '',
 };
 
+const mapStateToProps = state => ({
+  cartItems: getCartItems(state),
+});
+
+/*const mapDispatchToProps = dispatch => ({
+
+});*/
+
+const Container = connect(mapStateToProps)(Component);
+
 export {
-  Component as MenuBar,
-  //Container as MenuBar,
-  //Component as MenuBarComponent,
+  //Component as MenuBar,
+  Container as MenuBar,
+  Component as MenuBarComponent,
 };

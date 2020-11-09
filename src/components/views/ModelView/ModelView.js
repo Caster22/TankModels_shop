@@ -8,6 +8,7 @@ import {faEnvelope} from '@fortawesome/free-regular-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {fetchSelectedModel, getAllModels} from '../../../redux/ModelsRedux';
 import ImageSlider from '../../Features/Slider/Slider';
+import {addItem} from '../../../redux/CartRedux';
 
 const img1 = 'https://n7.nextpng.com/sticker-png/1004/477/sticker-png-world-of-tanks-blitz-kv-2-kv-1-wot-tiger-131-game-self-propelled-artillery-vehicle-desktop-wallpaper.png';
 const img2 = 'https://c0.klipartz.com/pngpicture/767/447/gratis-png-stridsvagn-103-churchill-tank-world-of-tanks-tank-destructor-tank.png';
@@ -31,15 +32,15 @@ class Component extends React.Component {
   }
 
   sendToCart = (model, e) => {
+    e.preventDefault();
     if(!this.state.price) console.log('error');
     else {
       const cartItem = {
-        item: model,
+        model: model,
         quantity: this.state.quantity,
         basePrice: this.state.price,
       };
-      console.log('item:', cartItem);
-      localStorage.setItem('cartItem', JSON.stringify(cartItem));
+      this.props.addItem(cartItem);
     }
   }
 
@@ -201,6 +202,7 @@ Component.propTypes = {
   selectedModel: PropTypes.func,
   model: PropTypes.object,
   match: PropTypes.object,
+  addItem: PropTypes.func,
 };
 
 Component.defaultProps = {
@@ -213,6 +215,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   selectedModel: id => dispatch(fetchSelectedModel(id)),
+  addItem: value => dispatch(addItem(value)),
 });
 
 const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
