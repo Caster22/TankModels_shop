@@ -1,0 +1,81 @@
+@import '../../../styles/settings.scss';
+
+.root {
+  margin: 40px auto;
+  display: inline-flex;
+  width: 100%;
+  background-color: $footer-text-color;
+  text-align: center;
+}
+
+.order {
+  font-weight: bold;
+  text-align: center;
+  color: $Form-text-color;
+}
+
+.title {
+  display: inline-block;
+  margin: 50px 55px 0 0;
+  text-transform: uppercase;
+  color: $hover-color;
+  font-size: 20px;
+  width: 120px;
+  text-align: left;
+}
+
+.input {
+  display: inline-block;
+  border: 1px solid $hover-color;
+  border-radius: 4px;
+  padding: 7px 0 7px 0;
+  width: 35%;
+  background-color: $menuBar-background;
+  input {
+    border: none;
+    padding-left: 10px;
+    width: 85%;
+    background-color: $menuBar-background;
+    &:focus {
+      outline: none;
+    }
+  }
+  textarea {
+    border: none;
+    padding-left: 10px;
+    width: 85%;
+    background-color: $menuBar-background;
+    &:focus {
+      outline: none;
+    }
+  }
+  select {
+    border: none;
+    padding-left: 10px;
+    width: 85%;
+    background-color: $menuBar-background;
+    outline: none;
+  }
+}
+
+.btn {
+  font-weight: bold;
+  font-size: 30px;
+  padding: 20px;
+  border-radius: 25px;
+  color: $cart-title-color;
+  background-color: $cart-background;
+  transition: $transition-background;
+  text-decoration: none;
+
+  &:hover {
+    transition: $transition-background;
+    background-color: $cart-title-color;
+    color: $cart-background;
+    text-decoration: none;
+  }
+}
+
+.formWrapper {
+
+}

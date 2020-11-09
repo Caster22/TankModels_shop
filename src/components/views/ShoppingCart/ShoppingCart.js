@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './ShoppingCart.module.scss';
-import {addItem, getCartItems, minusQuantity, plusQuantity} from '../../../redux/CartRedux';
+import { /*addItem, */getCartItems, minusQuantity, plusQuantity} from '../../../redux/CartRedux';
 import { connect } from 'react-redux';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faMinus, faPlus} from '@fortawesome/free-solid-svg-icons';
@@ -23,7 +23,7 @@ class Component extends React.Component {
   quantityMath = (plusMinus, modelId, e) => {
     e.preventDefault();
 
-    const id = {
+    /*const id = {
       id: modelId,
     };
 
@@ -31,7 +31,7 @@ class Component extends React.Component {
       this.props.minus(id);
     } else if (plusMinus === '+') {
       this.props.plus(id);
-    }
+    }*/
   };
 
   render() {
