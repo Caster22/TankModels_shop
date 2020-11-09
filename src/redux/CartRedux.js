@@ -18,7 +18,7 @@ export const reducer = (statePart = [], action = {}) => {
     case ADD_ITEM: {
       return {
         ...statePart,
-        items: [action.payload, ...statePart.items],
+        items: [ ...statePart.items, action.payload],
       };
     }
     default:

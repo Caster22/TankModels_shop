@@ -80,7 +80,6 @@ class Component extends React.Component {
 
       const categoryProducts = models.filter(item => item.country.name === activeCategory);
       const pagesCount = Math.ceil(categoryProducts.length / productsOnPage);
-      console.log(pagesCount,' = ', categoryProducts.length, '/',productsOnPage );
       const dots = [];
       for (let i = 0; i < pagesCount; i++) {
         dots.push(

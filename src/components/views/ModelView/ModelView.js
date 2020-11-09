@@ -9,6 +9,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {fetchSelectedModel, getAllModels} from '../../../redux/ModelsRedux';
 import ImageSlider from '../../Features/Slider/Slider';
 import {addItem} from '../../../redux/CartRedux';
+import shortid from 'shortid';
 
 const img1 = 'https://n7.nextpng.com/sticker-png/1004/477/sticker-png-world-of-tanks-blitz-kv-2-kv-1-wot-tiger-131-game-self-propelled-artillery-vehicle-desktop-wallpaper.png';
 const img2 = 'https://c0.klipartz.com/pngpicture/767/447/gratis-png-stridsvagn-103-churchill-tank-world-of-tanks-tank-destructor-tank.png';
@@ -36,9 +37,11 @@ class Component extends React.Component {
     if(!this.state.price) console.log('error');
     else {
       const cartItem = {
-        model: model,
+        id: shortid.generate(),
+        model: model.name,
         quantity: this.state.quantity,
-        basePrice: this.state.price,
+        basePrice: parseInt(this.state.price),
+        image: model.image,
       };
       this.props.addItem(cartItem);
     }

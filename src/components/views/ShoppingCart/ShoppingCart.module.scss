@@ -1,0 +1,100 @@
+@import '../../../styles/settings.scss';
+
+.root {
+  margin: 40px auto;
+}
+
+.cart {
+  border: 2px solid $cart-text-color;
+  border-radius: 25px;
+  background-color: darken($menuBar-background, 4%);
+  &__items {
+    padding: 30px;
+    &__item {
+      border: 2px solid $cart-title-color;
+      border-radius: 25px;
+      background-color: $cart-background;
+      margin-bottom: 20px;
+    }
+    &__desc {
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      &__left {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        img {
+          margin-right: 20px;
+          height: 80px;
+        }
+        h4 {
+          color: $cart-title-color;
+          font-weight: bold;
+          margin-right: 20px;
+        }
+        span {
+          margin-right: 10px;
+        }
+        .number {
+          margin-right: 20px;
+        }
+        button {
+          font-size: 10px;
+          margin-right: 5px;
+          border-radius: 25px;
+          color: $cart-title-color;
+          background-color: $cart-background;
+          transition: $transition-background;
+          &:hover {
+            transition: $transition-background;
+            background-color: $cart-title-color;
+            color: $cart-background;
+            text-decoration: none;
+          }
+        }
+      }
+      &__right {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        h4 {
+          margin-right: 10px;
+        }
+        h3 {
+          font-weight: bold;
+          max-width: 200px;
+        }
+      }
+    }
+    &__sum {
+      padding: 20px;
+      font-weight: bold;
+    }
+  }
+}
+.submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 40px;
+  div {
+    border: 3px solid;
+    padding: 20px;
+  }
+}
+.btn {
+  border-radius: 25px;
+  color: $cart-title-color;
+  background-color: $cart-background;
+  transition: $transition-background;
+  text-decoration: none;
+
+  &:hover {
+    transition: $transition-background;
+    background-color: $cart-title-color;
+    color: $cart-background;
+    text-decoration: none;
+  }
+}
