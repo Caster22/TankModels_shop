@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './Form.module.scss';
-import { getCartItems } from '../../../redux/CartRedux';
+import {addNewOrderRequest, getCartItems} from '../../../redux/CartRedux';
 import {connect} from 'react-redux';
 
 class Component extends React.Component {
@@ -32,18 +32,21 @@ class Component extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    const form = {
-      name: this.state.name,
-      address: this.state.address,
-      email: this.state.email,
-      phone: this.state.phone,
-      question: this.state.question,
-      shipping: this.state.shipping,
-      order: this.props.cartItems,
-    };
+    const form = [
+      {
+        name: this.state.name,
+        address: this.state.address,
+        email: this.state.email,
+        phone: this.state.phone,
+        question: this.state.question,
+        shipping: this.state.shipping,
+        order: this.props.cartItems,
+      },
+    ];
 
     /* send to mongoDB */
     console.log('form: ', form);
+    this.props.addNewOrder(form);
   }
 
   render() {
@@ -142,6 +145,7 @@ class Component extends React.Component {
 
 Component.propTypes = {
   cartItems: PropTypes.object,
+  addNewOrder: PropTypes.func,
 };
 
 const mapStateToProps = state => ({
@@ -150,7 +154,7 @@ const mapStateToProps = state => ({
 
 
 const mapDispatchToProps = dispatch => ({
-
+  addNewOrder: (form) => dispatch(addNewOrderRequest(form)),
 });
 
 const Container = connect(mapStateToProps, mapDispatchToProps())(Component);
