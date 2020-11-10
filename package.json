@@ -41,17 +41,10 @@
     "typescript": "^4.0.3"
   },
   "scripts": {
-    "start": "run-p start:* ",
-    "start-silent": "run-p start > /dev/null",
-    "start:react": "react-scripts start",
-    "start-and-test": "run-p start-silent test ",
-    "server": "nodemon backend/server.js",
-    "build": "react-scripts build",
-    "lint": "esw --watch --clear",
+    "start": "nodemon backend/server.js",
+    "build": "yarn install && react-scripts build",
     "test": "react-scripts test --noStackTrace",
-    "test-all": "react-scripts test --watchAll=false --noStackTrace",
-    "test-related": "react-scripts test --watchAll=false --noStackTrace --findRelatedTests",
-    "eject": "react-scripts eject"
+    "test:watch": "onchange \"./**/*.js\" -i -k -- yarn test"
   },
   "husky": {
     "hooks": {
