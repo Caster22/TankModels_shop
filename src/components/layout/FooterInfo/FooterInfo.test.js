@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import { FooterInfo } from './FooterInfo';
 
 
-describe('Header', () => {
+describe('FooterInfo', () => {
   it('renders without crashing', () => {
     shallow(<FooterInfo />);
   });

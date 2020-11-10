@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import { MainLayout } from './MainLayout';
 
 
-describe('Header', () => {
+describe('MainLayout', () => {
   it('renders without crashing', () => {
     shallow(<MainLayout />);
   });

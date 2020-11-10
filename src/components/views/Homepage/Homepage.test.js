@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import { store } from '../../../redux/store';
 
 
-describe('Header', () => {
+describe('Homepage', () => {
   it('renders without crashing', () => {
     shallow(<Provider store={ store }> <Homepage /> </Provider>);
   });

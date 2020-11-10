@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import { NotFound } from './NotFound';
 
 
-describe('Header', () => {
+describe('NotFound', () => {
   it('renders without crashing', () => {
     shallow(<NotFound />);
   });
