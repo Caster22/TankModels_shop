@@ -17,17 +17,15 @@ exports.postNew = async (req, res) => {
     const { name, address, email, phone, question, shipping, order } = bodySanitize;
 
     const newOrder = new Order(
-      [
-        {
-          name: name,
-          address: address,
-          email: email,
-          phone: phone,
-          question: question,
-          shipping: shipping,
-          order: order,
-        }
-      ]
+      {
+        name: name,
+        address: address,
+        email: email,
+        phone: phone,
+        question: question,
+        shipping: shipping,
+        order: order,
+      }
     );
 
     await newOrder.save();
