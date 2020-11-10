@@ -75,14 +75,14 @@ export const reducer = (statePart = [], action = {}) => {
     case ADD_NEW_ORDER: {
       return {
         ...statePart,
-        loading: {
+        /*loading: {
           active: false,
           error: false,
-        },
-        data: [
+        },*/
+        /*data: [
           ...statePart.data,
           ...action.payload,
-        ],
+        ],*/
       };
     }
     case ADD_ITEM: {

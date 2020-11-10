@@ -32,17 +32,15 @@ class Component extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    const form = [
-      {
-        name: this.state.name,
-        address: this.state.address,
-        email: this.state.email,
-        phone: this.state.phone,
-        question: this.state.question,
-        shipping: this.state.shipping,
-        order: this.props.cartItems,
-      },
-    ];
+    const form = {
+      name: this.state.name,
+      address: this.state.address,
+      email: this.state.email,
+      phone: this.state.phone,
+      question: this.state.question,
+      shipping: this.state.shipping,
+      //order: this.props.cartItems,
+    };
 
     /* send to mongoDB */
     console.log('form: ', form);
