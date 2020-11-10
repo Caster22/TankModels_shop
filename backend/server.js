@@ -8,6 +8,7 @@ require('dotenv').config()
 const countriesRoutes = require('./routes/countries.routes');
 const tanksRoutes = require('./routes/models.routes');
 const promotionsRoutes = require('./routes/promotions.routes');
+const ordersRoutes = require('./routes/orders.routes');
 
 const app = express();
 
@@ -19,7 +20,9 @@ app.use(express.urlencoded({ extended: false }));
 /* API ENDPOINTS */
 app.use('/api', countriesRoutes);
 app.use('/api', tanksRoutes);
+app.use('/api', ordersRoutes);
 app.use('/api', promotionsRoutes);
+
 
 /* API ERROR PAGES */
 app.use('/api', (req, res) => {
