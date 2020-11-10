@@ -42,7 +42,7 @@ export const fetchSelectedModel = (id) => {
   return async dispatch => {
     dispatch(fetchStarted());
     try {
-      let res = await Axios.get(`http://localhost:8000/api/models/${id}`);
+      let res = await Axios.get(`/api/models/${id}`);
       await new Promise((resolve, reject) => resolve());
       dispatch(fetchSuccess(res.data));
     } catch(err) {
