@@ -48,8 +48,8 @@ const DBConnect = (login, pass) => {
   }
 }
 
-//const dbURI = `mongodb+srv://${ DBConnect('','') }@cluster0.hud0b.mongodb.net/TankModelsDB?retryWrites=true&w=majority`;
-const dbURI = `mongodb+srv://Caster22:polska22@cluster0.hud0b.mongodb.net/TankModelsDB?retryWrites=true&w=majority`;
+const dbURI = `mongodb+srv://${ DBConnect('','') }@cluster0.hud0b.mongodb.net/TankModelsDB?retryWrites=true&w=majority`;
+
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 const db = mongoose.connection;
