@@ -23,7 +23,7 @@ class Component extends React.Component {
   quantityMath = (plusMinus, modelId, e) => {
     e.preventDefault();
 
-    /*const id = {
+    const id = {
       id: modelId,
     };
 
@@ -31,12 +31,11 @@ class Component extends React.Component {
       this.props.minus(id);
     } else if (plusMinus === '+') {
       this.props.plus(id);
-    }*/
+    }
   };
 
   render() {
     const { items } = this.props.cartItems;
-    console.log(items);
     return (
       <div className={ styles.root }>
         <div className='container'>
@@ -106,7 +105,7 @@ const mapDispatchToProps = dispatch => ({
   minus: value => dispatch(minusQuantity(value)),
 });
 
-const Container = connect(mapStateToProps, mapDispatchToProps())(Component);
+const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
 
 export {
   //Component as Cart,

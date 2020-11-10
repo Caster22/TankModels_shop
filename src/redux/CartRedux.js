@@ -92,17 +92,39 @@ export const reducer = (statePart = [], action = {}) => {
       };
     }
     case PLUS_QUANTITY: {
-      //const selectedElement = statePart.items.filter(item => item.id === action.payload);
-      //console.log('log',selectedElement);
-      return {
+      const newState = { ...statePart };
+      const selectedElement = statePart.items.filter(item => item.id === action.payload.id)[0];
+      newState.items = [
+        selectedElement,
+        {
+          model: selectedElement.model,
+          id: selectedElement.id,
+          quantity: selectedElement.quantity >= 9 ? selectedElement.quantity : selectedElement.quantity += 1 ,
+          basePrice: selectedElement.basePrice,
+          image: selectedElement.image,
+        },
+      ];
+      return{
         ...statePart,
+        newState,
       };
     }
     case MINUS_QUANTITY: {
-      //const selectedElement = statePart.items.filter(item => item.id === action.payload);
-      //console.log('log',selectedElement);
-      return {
+      const newState = { ...statePart };
+      const selectedElement = statePart.items.filter(item => item.id === action.payload.id)[0];
+      newState.items = [
+        selectedElement,
+        {
+          model: selectedElement.model,
+          id: selectedElement.id,
+          quantity: selectedElement.quantity <= 1 ? selectedElement.quantity : selectedElement.quantity -= 1 ,
+          basePrice: selectedElement.basePrice,
+          image: selectedElement.image,
+        },
+      ];
+      return{
         ...statePart,
+        newState,
       };
     }
     default:

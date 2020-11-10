@@ -157,7 +157,7 @@ const mapDispatchToProps = dispatch => ({
   addNewOrder: (form) => dispatch(addNewOrderRequest(form)),
 });
 
-const Container = connect(mapStateToProps, mapDispatchToProps())(Component);
+const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
 
 export {
   //Component as Form,
