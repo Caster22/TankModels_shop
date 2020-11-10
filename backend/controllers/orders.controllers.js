@@ -14,7 +14,7 @@ exports.getAll = async (req, res) => {
 exports.postNew = async (req, res) => {
   try {
     const bodySanitize = sanitize(req.body);
-    const { name, address, email, phone, question, shipping } = bodySanitize;
+    const { name, address, email, phone, question, shipping, order } = bodySanitize;
 
     const newOrder = new Order(
       [
@@ -25,6 +25,7 @@ exports.postNew = async (req, res) => {
           phone: phone,
           question: question,
           shipping: shipping,
+          order: order,
         }
       ]
     );

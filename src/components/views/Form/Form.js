@@ -39,7 +39,7 @@ class Component extends React.Component {
       phone: this.state.phone,
       question: this.state.question,
       shipping: this.state.shipping,
-      //order: this.props.cartItems,
+      order: this.props.cartItems,
     };
 
     /* send to mongoDB */
