@@ -26,7 +26,7 @@ export const fetchAllModels = () => {
     const state = getState();
     if(!state.models.data) {
       Axios
-        .get('http://localhost:8000/api/models')
+        .get('/api/models')
         .then(res => {
           dispatch(fetchSuccess(res.data));
         })

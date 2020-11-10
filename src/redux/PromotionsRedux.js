@@ -25,7 +25,7 @@ export const fetchPromotions = () => {
     const state = getState();
     if(!state.promotions.data) {
       Axios
-        .get('http://localhost:8000/api/promotions')
+        .get('/api/promotions')
         .then(res => {
           dispatch(fetchSuccess(res.data));
         })

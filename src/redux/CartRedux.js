@@ -33,7 +33,7 @@ export const addNewOrderRequest = (order) => {
     dispatch(fetchStarted());
 
     try {
-      let res = await Axios.post('http://localhost:8000/api/cart', order);
+      let res = await Axios.post('/api/cart', order);
       await new Promise((resolve) => resolve());
       dispatch(addNewOrder(res));
     } catch(e) {

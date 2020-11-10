@@ -25,7 +25,7 @@ export const fetchAllCountries = () => {
     const state = getState();
     if(!state.countries.data) {
       Axios
-        .get('http://localhost:8000/api/countries')
+        .get('/api/countries')
         .then(res => {
           dispatch(fetchSuccess(res.data));
         })
