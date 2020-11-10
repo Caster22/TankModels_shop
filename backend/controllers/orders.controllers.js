@@ -24,7 +24,7 @@ exports.postNew = async (req, res) => {
         phone: phone,
         question: question,
         shipping: shipping,
-        order: order,
+        order: order.items,
       }
     );
 

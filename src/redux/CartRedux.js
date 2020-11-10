@@ -15,6 +15,7 @@ const ADD_ITEM = createActionName('ADD_ITEM');
 const ADD_NEW_ORDER = createActionName('ADD_NEW_ORDER');
 const PLUS_QUANTITY = createActionName('PLUS_QUANTITY');
 const MINUS_QUANTITY = createActionName('MINUS_QUANTITY');
+const REMOVE_ITEM = createActionName('REMOVE_ITEM');
 
 export const fetchStarted = payload => ({ payload, type: FETCH_START });
 export const fetchSuccess = payload => ({ payload, type: FETCH_SUCCESS });
@@ -24,6 +25,7 @@ export const addNewOrder = payload => ({payload, type: ADD_NEW_ORDER});
 export const addItem = payload => ({ payload, type: ADD_ITEM });
 export const plusQuantity = payload => ({ payload, type: PLUS_QUANTITY });
 export const minusQuantity = payload => ({ payload, type: MINUS_QUANTITY });
+export const removeItem = payload => ({ payload, type: REMOVE_ITEM });
 
 /* thnuk creators */
 export const addNewOrderRequest = (order) => {
@@ -75,14 +77,6 @@ export const reducer = (statePart = [], action = {}) => {
     case ADD_NEW_ORDER: {
       return {
         ...statePart,
-        /*loading: {
-          active: false,
-          error: false,
-        },*/
-        /*data: [
-          ...statePart.data,
-          ...action.payload,
-        ],*/
       };
     }
     case ADD_ITEM: {
@@ -125,6 +119,13 @@ export const reducer = (statePart = [], action = {}) => {
       return{
         ...statePart,
         newState,
+      };
+    }
+    case REMOVE_ITEM: {
+      return {
+        items: [
+          ...statePart.items.filter(item => item.id !== action.payload),
+        ],
       };
     }
     default:

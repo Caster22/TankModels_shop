@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './ShoppingCart.module.scss';
-import { /*addItem, */getCartItems, minusQuantity, plusQuantity} from '../../../redux/CartRedux';
+import { getCartItems, minusQuantity, plusQuantity, removeItem} from '../../../redux/CartRedux';
 import { connect } from 'react-redux';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faMinus, faPlus} from '@fortawesome/free-solid-svg-icons';
@@ -34,6 +34,12 @@ class Component extends React.Component {
     }
   };
 
+  removeItemHandler = (id, e) => {
+    e.preventDefault();
+    console.log(id);
+    this.props.remove(id);
+  };
+
   render() {
     const { items } = this.props.cartItems;
     return (
@@ -57,7 +63,7 @@ class Component extends React.Component {
                       </button>
                     </div>
                     <div>
-                      <button className={styles.btn}>Remove product</button>
+                      <button onClick={event => this.removeItemHandler(item.id, event)} className={styles.btn}>Remove product</button>
                     </div>
                     <div className={styles.cart__items__desc__right}>
                       <h3 className='text-right'>{item.basePrice}$</h3>
@@ -89,6 +95,7 @@ Component.propTypes = {
   cartItems: PropTypes.object,
   minus: PropTypes.func,
   plus: PropTypes.func,
+  remove: PropTypes.func,
 };
 
 
@@ -103,6 +110,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   plus: value => dispatch(plusQuantity(value)),
   minus: value => dispatch(minusQuantity(value)),
+  remove: value => dispatch(removeItem(value)),
 });
 
 const Container = connect(mapStateToProps, mapDispatchToProps)(Component);

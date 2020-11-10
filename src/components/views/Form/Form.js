@@ -124,6 +124,7 @@ class Component extends React.Component {
                       onChange={e => this.handleChange(e)}
                       value={this.state.shipping}
                     >
+                      <option>---</option>
                       <option>Inpost packer locker</option>
                       <option>UPS Standard 24H</option>
                       <option>Pickup</option>
